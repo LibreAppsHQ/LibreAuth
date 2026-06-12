@@ -35,11 +35,9 @@
 			</a>
 		{/each}
 
-		<form method="POST" action="/app/auth/logout" class="contents">
-			<button type="submit" class="neo-mobile-nav-item" aria-label="Sign out">
-				<i class="fa-solid fa-right-from-bracket text-base"></i>
-				<span>Out</span>
-			</button>
-		</form>
+		<a href="/app/auth/logout" class="neo-mobile-nav-item" aria-label="Sign out">
+			<i class="fa-solid fa-right-from-bracket text-base"></i>
+			<span>Out</span>
+		</a>
 	</nav>
 {/if}

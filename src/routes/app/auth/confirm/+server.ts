@@ -48,7 +48,7 @@ export const GET: RequestHandler = async ({ url, cookies }) => {
 	const type = (resolvedType ?? typeParam) as EmailOtpType | null;
 	const recovery = isRecoveryFlow(type, next, intent);
 
-	const supabase = createSupabaseRouteClient(cookies);
+	const supabase = createSupabaseRouteClient(cookies, url.protocol === 'https:');
 
 	if (token_hash && type) {
 		const { error } = await supabase.auth.verifyOtp({ type, token_hash });

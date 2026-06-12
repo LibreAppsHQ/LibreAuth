@@ -1,9 +1,11 @@
 <script lang="ts">
 	import { page } from '$app/state';
 	import AppMobileNav from '$lib/components/AppMobileNav.svelte';
+	import InstallPrompt from '$lib/components/InstallPrompt.svelte';
 	import Logo from '$lib/components/Logo.svelte';
 	import MarketingHeader from '$lib/components/MarketingHeader.svelte';
 	import SiteFooter from '$lib/components/SiteFooter.svelte';
+	import { initInstallPrompt } from '$lib/stores/installPrompt';
 	import type { LayoutData } from './$types';
 
 	let { data, children } = $props<{ data: LayoutData; children: import('svelte').Snippet }>();
@@ -19,6 +21,12 @@
 	let isAuthPage = $derived(page.url.pathname in AUTH_PAGE_TITLES);
 	let authPageTitle = $derived(AUTH_PAGE_TITLES[page.url.pathname] ?? '');
 	let isSettingsPage = $derived(page.url.pathname.startsWith('/app/settings'));
+
+	$effect(() => {
+		if (data.user && !(page.url.pathname in AUTH_PAGE_TITLES)) {
+			initInstallPrompt();
+		}
+	});
 </script>
 
 <div class="neo-shell">
@@ -43,11 +51,7 @@
 						>
 							<i class="fa-solid fa-gear"></i>
 						</a>
-						<form method="POST" action="/app/auth/logout">
-							<button type="submit" class="neo-btn neo-btn-ghost px-3 py-2 text-xs sm:text-sm"
-								>Out</button
-							>
-						</form>
+						<a href="/app/auth/logout" class="neo-btn neo-btn-ghost px-3 py-2 text-xs sm:text-sm">Out</a>
 					</nav>
 				{/if}
 			</div>
@@ -60,6 +64,7 @@
 
 	{#if data.user && !isAuthPage}
 		<AppMobileNav />
+		<InstallPrompt />
 	{/if}
 
 	{#if isAuthPage}

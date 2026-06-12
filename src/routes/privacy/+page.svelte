@@ -17,7 +17,7 @@
 
 <SeoHead
 	title="Privacy Policy"
-	description="LibreAuth privacy policy: minimal data collection, no ads, optional PostHog on marketing pages only, and no analytics inside your TOTP vault."
+	description="LibreAuth privacy policy: minimal data collection, no ads, optional consent-based PostHog analytics, and no TOTP code logging."
 	breadcrumbs={[
 		{ name: 'Home', path: '/' },
 		{ name: 'Privacy', path: '/privacy' }
@@ -29,7 +29,7 @@
 		},
 		{
 			q: 'Cookies?',
-			a: 'Session cookies keep you signed in. Optional PostHog analytics load only after you accept the cookie banner, and only on marketing/auth pages — never inside the vault.'
+			a: 'Session cookies keep you signed in. Optional PostHog analytics load only after you accept the cookie banner, on marketing and app pages. We never send TOTP secrets or generated codes to PostHog.'
 		},
 		{
 			q: 'GDPR / CCPA?',
@@ -46,8 +46,9 @@
 			<span class="neo-badge">Plain language</span>
 			<p class="mt-4 text-sm leading-7 font-medium text-(--app-muted)">
 				We collect the minimum needed to run a synced authenticator. We do not build advertising
-				profiles, sell data, or run trackers on the app dashboard. This policy describes the default
-				hosted behavior — self-hosted instances are your responsibility.
+				profiles, sell data, or run ad trackers. Optional PostHog product analytics (after cookie
+				consent) help us improve the app — never your TOTP secrets or codes. This policy describes
+				the default hosted behavior — self-hosted instances are your responsibility.
 			</p>
 		</div>
 
@@ -81,7 +82,7 @@
 				<ul class="mt-3 space-y-2">
 					<li>No advertising or sponsored placements.</li>
 					<li>No behavioral profiling or cross-site ad tracking.</li>
-					<li>No analytics inside the authenticator vault, add flow, or settings.</li>
+					<li>No sending TOTP secrets, QR payloads, or generated codes to analytics.</li>
 					<li>No selling or renting user data to brokers.</li>
 					<li>No training AI models on your TOTP secrets — obviously.</li>
 				</ul>
@@ -91,7 +92,7 @@
 				<h2 class="!mt-0 text-xl font-bold">Third-party processors</h2>
 				<p class="mt-3">
 					Hosted LibreAuth uses Supabase (database + auth), Vercel (hosting), and optionally PostHog
-					(product analytics on marketing pages only, after cookie consent). Self-hosting removes
+					(product analytics after cookie consent on marketing and app pages). Self-hosting removes
 					Vercel from the chain; you choose whether to enable PostHog.
 				</p>
 			</div>
@@ -132,8 +133,9 @@
 					</li>
 					<li>
 						<strong class="text-(--app-text)">PostHog analytics</strong> — only after you accept this
-						banner, and only on marketing and auth pages (homepage, pricing, sign-in, etc.). Not loaded
-						on your vault, add-account, or settings screens.
+						banner, on marketing pages and inside the signed-in app (vault, add account, settings).
+						Pageviews and signed-in user IDs help us improve LibreAuth. Autocapture and session replay
+						are off. TOTP secrets and codes are never sent.
 					</li>
 				</ul>
 				<p class="mt-4 text-sm leading-7 text-(--app-muted)">
@@ -153,7 +155,7 @@
 					},
 					{
 						q: 'Cookies?',
-						a: 'Session cookies keep you signed in. Optional PostHog analytics load only after you accept the cookie banner, and only on marketing/auth pages — never inside the vault.'
+						a: 'Session cookies keep you signed in. Optional PostHog analytics load only after you accept the cookie banner, on marketing and app pages. We never send TOTP secrets or generated codes to PostHog.'
 					},
 					{
 						q: 'GDPR / CCPA?',

@@ -1,11 +1,11 @@
 import { json } from '@sveltejs/kit';
-import { createSupabaseRouteClient } from '$lib/server/supabaseCookies';
+import { createSupabaseRouteClient, getAuthenticatedUser } from '$lib/server/supabaseCookies';
 import { requireTurnstile } from '$lib/server/turnstile';
 import type { RequestHandler } from './$types';
 
 const RECOVERY_COOKIE = 'password_recovery';
 
-export const POST: RequestHandler = async ({ request, cookies, getClientAddress }) => {
+export const POST: RequestHandler = async ({ request, cookies, url, getClientAddress }) => {
 	let password = '';
 	let turnstileToken: string | undefined;
 
@@ -40,12 +40,10 @@ export const POST: RequestHandler = async ({ request, cookies, getClientAddress 
 		return json({ error: turnstile.error }, { status: 400 });
 	}
 
-	const supabase = createSupabaseRouteClient(cookies);
-	const {
-		data: { session }
-	} = await supabase.auth.getSession();
+	const supabase = createSupabaseRouteClient(cookies, url.protocol === 'https:');
+	const user = await getAuthenticatedUser(supabase);
 
-	if (!session) {
+	if (!user) {
 		return json({ error: 'Code expired or invalid. Request a new one.' }, { status: 401 });
 	}
 

@@ -48,8 +48,8 @@
 						<Logo class="h-10" />
 					</a>
 					<p class="text-sm leading-7 text-(--app-muted)">
-						Neo-brutalist TOTP for people who hate boring security apps. Open source. No ads. No
-						tracking.
+						Neo-brutalist TOTP for people who hate boring security apps. Open source. No ads.
+						Consent-based PostHog analytics.
 					</p>
 					<span class="neo-badge neo-badge-alt">v{APP_VERSION}</span>
 				</div>

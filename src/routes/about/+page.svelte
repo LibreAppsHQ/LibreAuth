@@ -17,7 +17,7 @@
 			event: 'LibreAuth goes live — neo-brutalist UI, Supabase sync, AGPL license.'
 		},
 		{ label: 'Next up', event: 'Client-side vault encryption and full export bundles.' },
-		{ label: 'Always', event: 'No ads, no tracking, no made-up backstory.' }
+		{ label: 'Always', event: 'No ads, consent-based analytics, no made-up backstory.' }
 	];
 
 	const faqs = [
@@ -31,7 +31,7 @@
 		},
 		{
 			q: 'Will you sell my data?',
-			a: 'No. There is no ad network, no data broker, no "anonymous analytics" on the authenticator dashboard.'
+			a: 'No. There is no ad network and no data broker. Optional PostHog analytics (after cookie consent) help us improve the product — we do not sell your data.'
 		}
 	];
 </script>
@@ -66,7 +66,7 @@
 		<section class="mt-10">
 			<h2 class="neo-heading mb-5 text-xl font-bold">Our principles</h2>
 			<div class="grid gap-5 sm:grid-cols-2">
-				{#each [{ title: 'Transparent', desc: 'Public code. Clear security docs. No "trust us" hand-waving.', icon: 'fa-eye' }, { title: 'Portable', desc: 'Standard TOTP. Export anytime. No lock-in games.', icon: 'fa-suitcase' }, { title: 'Minimal data', desc: 'Only what sync needs. No analytics on the app dashboard.', icon: 'fa-database' }, { title: 'Self-hostable', desc: 'Your Supabase, your rules, your residency.', icon: 'fa-server' }] as item}
+				{#each [{ title: 'Transparent', desc: 'Public code. Clear security docs. No "trust us" hand-waving.', icon: 'fa-eye' }, { title: 'Portable', desc: 'Standard TOTP. Export anytime. No lock-in games.', icon: 'fa-suitcase' }, { title: 'Minimal data', desc: 'Only what sync needs. Optional PostHog after consent — never your TOTP secrets.', icon: 'fa-database' }, { title: 'Self-hostable', desc: 'Your Supabase, your rules, your residency.', icon: 'fa-server' }] as item}
 					<div class="neo-card-sm p-6">
 						<i class="fa-solid {item.icon} text-lg text-(--app-accent-alt)"></i>
 						<h3 class="mt-3 text-lg font-bold">{item.title}</h3>

@@ -67,7 +67,9 @@
 	<div class="neo-card p-6 sm:p-8">
 		<span class="neo-badge">Login</span>
 		<h1 class="neo-heading mt-4 text-3xl font-bold">Sign in</h1>
-		<p class="mt-2 text-sm font-medium text-(--app-muted)">Get back to your codes.</p>
+		<p class="mt-2 text-sm font-medium text-(--app-muted)">
+			Get back to your codes. You stay signed in on this device until you sign out.
+		</p>
 
 		<form class="mt-8 space-y-4" onsubmit={submit}>
 			<div>

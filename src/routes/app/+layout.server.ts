@@ -9,25 +9,26 @@ const AUTH_PATHS = [
 	'/app/reset-password'
 ];
 
-export const load: LayoutServerLoad = async ({ locals, url }) => {
+export const load: LayoutServerLoad = async ({ locals, url, depends }) => {
+	depends('supabase:auth');
 	const { session, user } = await locals.safeGetSession();
 
 	const isAuthPage = AUTH_PATHS.includes(url.pathname);
 	const isSignInPage = url.pathname === '/app/login' || url.pathname === '/app/register';
 
-	if (!session && !isAuthPage) {
+	if (!user && !isAuthPage) {
 		throw redirect(303, '/app/login');
 	}
 
-	if (session && isSignInPage) {
+	if (user && isSignInPage) {
 		throw redirect(303, '/app');
 	}
 
-	if (session && user?.email_confirmed_at && url.pathname === '/app/verify-email') {
+	if (user?.email_confirmed_at && url.pathname === '/app/verify-email') {
 		throw redirect(303, '/app');
 	}
 
-	if (session && user && !user.email_confirmed_at && !isAuthPage) {
+	if (user && !user.email_confirmed_at && !isAuthPage) {
 		const email = user.email ?? '';
 		throw redirect(303, `/app/verify-email?email=${encodeURIComponent(email)}`);
 	}

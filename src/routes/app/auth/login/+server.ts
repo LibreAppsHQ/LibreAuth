@@ -3,7 +3,7 @@ import { createSupabaseRouteClient } from '$lib/server/supabaseCookies';
 import { requireTurnstile } from '$lib/server/turnstile';
 import type { RequestHandler } from './$types';
 
-export const POST: RequestHandler = async ({ request, cookies, getClientAddress }) => {
+export const POST: RequestHandler = async ({ request, cookies, url, getClientAddress }) => {
 	let email = '';
 	let password = '';
 	let turnstileToken: string | undefined;
@@ -30,7 +30,7 @@ export const POST: RequestHandler = async ({ request, cookies, getClientAddress 
 		return json({ error: turnstile.error }, { status: 400 });
 	}
 
-	const supabase = createSupabaseRouteClient(cookies);
+	const supabase = createSupabaseRouteClient(cookies, url.protocol === 'https:');
 	const { error } = await supabase.auth.signInWithPassword({ email, password });
 
 	if (error) {

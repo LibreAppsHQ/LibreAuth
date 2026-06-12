@@ -30,7 +30,7 @@
 					<p id="cookie-banner-title" class="text-sm font-bold sm:text-base">Cookies & storage</p>
 					<p id="cookie-banner-desc" class="mt-2 text-sm leading-6 text-(--app-muted)">
 						We use essential session cookies when you sign in, local storage for your theme, and
-						optional PostHog analytics on marketing pages after you accept (never on your vault).
+						optional PostHog product analytics after you accept (marketing pages and the signed-in app).
 						<a href="/privacy#cookies" class="neo-link">Privacy details</a>
 					</p>
 

@@ -8,7 +8,7 @@ Open-source web authenticator. SvelteKit + Tailwind + Supabase.
    The service role key is required for account deletion (Settings → Delete account). Find it in Supabase → Project Settings → API.
 2. Optional: add Cloudflare Turnstile keys for bot protection on sign-in, registration, email resend, and account deletion.
    Create a widget at [Cloudflare Turnstile](https://dash.cloudflare.com/?to=/:account/turnstile) and set both `PUBLIC_TURNSTILE_SITE_KEY` and `TURNSTILE_SECRET_KEY`.
-3. Optional: add PostHog for product analytics on marketing pages (`PUBLIC_POSTHOG_KEY`, optional `PUBLIC_POSTHOG_HOST`). Analytics only load after cookie consent and never on the vault UI.
+3. Optional: add PostHog for product analytics (`PUBLIC_POSTHOG_KEY`, optional `PUBLIC_POSTHOG_HOST`). Analytics load only after cookie consent across marketing and app pages; TOTP secrets and codes are never sent.
 4. Create the database table (pick one):
    - **CLI (linked project):** `pnpm db:setup`
    - **Dashboard:** open Supabase → SQL Editor → run `supabase/migrations/001_initial.sql`

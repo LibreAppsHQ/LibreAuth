@@ -472,6 +472,28 @@ html[data-cookie-consent] .neo-cookie-banner {
 	display: none;
 }
 
+.neo-install-prompt {
+	position: fixed;
+	right: max(1rem, var(--safe-right));
+	bottom: calc(var(--mobile-nav-height) + var(--safe-bottom) + 0.75rem);
+	left: max(1rem, var(--safe-left));
+	z-index: 49;
+	max-width: 42rem;
+	margin-inline: auto;
+	animation: neo-pop 0.35s ease both;
+}
+
+@media (min-width: 768px) {
+	.neo-install-prompt {
+		bottom: max(1rem, var(--safe-bottom));
+	}
+}
+
+.neo-install-prompt-inner {
+	padding: 1rem;
+	background: var(--app-card);
+}
+
 .neo-cookie-banner-inner {
 	padding: 1rem;
 	background: var(--app-card);

@@ -4,8 +4,8 @@ import type { TotpEntry } from '$lib/totp';
 
 export const load: PageLoad = async ({ parent, depends }) => {
 	depends('app:entries');
-	const { session } = await parent();
-	if (!session) return { entries: [] as TotpEntry[], dbError: null };
+	const { user } = await parent();
+	if (!user) return { entries: [] as TotpEntry[], dbError: null };
 
 	const supabase = createSupabaseBrowserClient();
 	const { data, error } = await supabase

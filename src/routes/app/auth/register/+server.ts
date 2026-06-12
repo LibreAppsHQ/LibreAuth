@@ -45,7 +45,7 @@ export const POST: RequestHandler = async ({ request, cookies, url, getClientAdd
 	const secure = url.protocol === 'https:';
 	const emailRedirectTo = buildAuthConfirmRedirect(url.origin, '/app', 'signup');
 
-	const supabase = createSupabaseRouteClient(cookies);
+	const supabase = createSupabaseRouteClient(cookies, url.protocol === 'https:');
 	const { data, error } = await supabase.auth.signUp({
 		email,
 		password,
@@ -69,7 +69,7 @@ export const POST: RequestHandler = async ({ request, cookies, url, getClientAdd
 		return json({ error: formatted }, { status: 400 });
 	}
 
-	const verified = Boolean(data.session && data.user?.email_confirmed_at);
+	const verified = Boolean(data.user?.email_confirmed_at);
 	const needsVerification = !verified;
 
 	if (needsVerification) {

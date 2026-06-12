@@ -549,11 +549,9 @@
 			</SettingsRow>
 
 			<SettingsRow>
-				<form method="POST" action="/app/auth/logout">
-					<button type="submit" class="neo-btn neo-btn-ghost">
-						<i class="fa-solid fa-right-from-bracket"></i> Sign out
-					</button>
-				</form>
+				<a href="/app/auth/logout" class="neo-btn neo-btn-ghost">
+					<i class="fa-solid fa-right-from-bracket"></i> Sign out
+				</a>
 			</SettingsRow>
 		</SettingsSection>
 	{:else}

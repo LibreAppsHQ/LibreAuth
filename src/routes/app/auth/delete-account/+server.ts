@@ -4,7 +4,7 @@ import { createSupabaseRouteClient } from '$lib/server/supabaseCookies';
 import { requireTurnstile } from '$lib/server/turnstile';
 import type { RequestHandler } from './$types';
 
-export const POST: RequestHandler = async ({ locals, cookies, request, getClientAddress }) => {
+export const POST: RequestHandler = async ({ locals, cookies, request, url, getClientAddress }) => {
 	const { user } = await locals.safeGetSession();
 
 	if (!user) {
@@ -50,7 +50,7 @@ export const POST: RequestHandler = async ({ locals, cookies, request, getClient
 		return json({ error: deleteError.message }, { status: 500 });
 	}
 
-	const supabase = createSupabaseRouteClient(cookies);
+	const supabase = createSupabaseRouteClient(cookies, url.protocol === 'https:');
 	await supabase.auth.signOut();
 
 	return json({ ok: true });

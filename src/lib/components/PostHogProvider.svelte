@@ -6,7 +6,6 @@
 		capturePageview,
 		identifyUser,
 		initPostHog,
-		isPostHogAllowedPath,
 		isPostHogConfigured,
 		resetPostHogUser,
 		shutdownPostHog
@@ -33,9 +32,9 @@
 
 		const user = page.data.user as { id: string; email?: string | null } | null | undefined;
 
-		if (user?.id && isPostHogAllowedPath(page.url.pathname)) {
+		if (user?.id) {
 			identifyUser(user);
-		} else if (!user) {
+		} else {
 			resetPostHogUser();
 		}
 	});

@@ -4,9 +4,9 @@ import type { PageServerLoad } from './$types';
 const RECOVERY_COOKIE = 'password_recovery';
 
 export const load: PageServerLoad = async ({ locals, cookies }) => {
-	const { session } = await locals.safeGetSession();
+	const { user } = await locals.safeGetSession();
 
-	if (!session) {
+	if (!user) {
 		throw redirect(303, '/app/forgot-password');
 	}
 

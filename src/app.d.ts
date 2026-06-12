@@ -16,6 +16,19 @@ declare global {
 			reset: (widgetId?: string) => void;
 			remove: (widgetId: string) => void;
 		};
+		BeforeInstallPromptEvent?: {
+			new (type: string, eventInitDict?: EventInit): BeforeInstallPromptEvent;
+		};
+	}
+
+	interface BeforeInstallPromptEvent extends Event {
+		readonly platforms: string[];
+		readonly userChoice: Promise<{ outcome: 'accepted' | 'dismissed'; platform: string }>;
+		prompt(): Promise<void>;
+	}
+
+	interface WindowEventMap {
+		beforeinstallprompt: BeforeInstallPromptEvent;
 	}
 
 	namespace App {

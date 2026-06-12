@@ -38,7 +38,7 @@ export const POST: RequestHandler = async ({ request, cookies, url, getClientAdd
 	const origin = getAuthRedirectOrigin(url.origin);
 	const redirectTo = `${origin}/app/forgot-password`;
 
-	const supabase = createSupabaseRouteClient(cookies);
+	const supabase = createSupabaseRouteClient(cookies, url.protocol === 'https:');
 	const { error } = await supabase.auth.resetPasswordForEmail(email, { redirectTo });
 
 	if (error) {

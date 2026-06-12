@@ -29,7 +29,7 @@
 
 <SeoHead
 	title="Security"
-	description="How LibreAuth protects TOTP secrets: browser-side code generation, Supabase row-level security, HTTP-only sessions, and no vault analytics."
+	description="How LibreAuth protects TOTP secrets: browser-side code generation, Supabase row-level security, HTTP-only sessions, and consent-based PostHog analytics that never sees your codes."
 	breadcrumbs={[
 		{ name: 'Home', path: '/' },
 		{ name: 'Security', path: '/security' }
@@ -94,6 +94,15 @@
 					<li>INSERT — must match authenticated user</li>
 					<li>UPDATE / DELETE — own rows only</li>
 				</ul>
+			</div>
+
+			<div class="neo-card p-6">
+				<h2 class="!mt-0 text-xl font-bold">Product analytics</h2>
+				<p class="mt-3">
+					Hosted LibreAuth uses PostHog after cookie consent to understand how people use marketing
+					pages and the signed-in app. We capture pageviews and identify signed-in users — not TOTP
+					secrets, QR payloads, or generated codes. Autocapture and session replay are disabled.
+				</p>
 			</div>
 
 			<div class="neo-card-sm p-6">

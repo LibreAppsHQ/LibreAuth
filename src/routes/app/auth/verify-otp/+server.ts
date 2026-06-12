@@ -27,7 +27,7 @@ export const POST: RequestHandler = async ({ request, cookies, url }) => {
 		return json({ error: 'Email and code are required.' }, { status: 400 });
 	}
 
-	const supabase = createSupabaseRouteClient(cookies);
+	const supabase = createSupabaseRouteClient(cookies, url.protocol === 'https:');
 	const { error } = await supabase.auth.verifyOtp({ email, token, type });
 
 	if (error) {

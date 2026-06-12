@@ -4,8 +4,6 @@ import posthog from 'posthog-js';
 
 let initialized = false;
 
-const BLOCKED_PREFIXES = ['/app/add', '/app/settings'];
-
 export function getPostHogKey(): string {
 	return env.PUBLIC_POSTHOG_KEY ?? '';
 }
@@ -16,11 +14,6 @@ export function getPostHogHost(): string {
 
 export function isPostHogConfigured(): boolean {
 	return Boolean(getPostHogKey());
-}
-
-export function isPostHogAllowedPath(pathname: string): boolean {
-	if (pathname === '/app') return false;
-	return !BLOCKED_PREFIXES.some((prefix) => pathname.startsWith(prefix));
 }
 
 export function initPostHog(): boolean {
@@ -34,13 +27,7 @@ export function initPostHog(): boolean {
 		person_profiles: 'identified_only',
 		persistence: 'localStorage+cookie',
 		autocapture: false,
-		disable_session_recording: true,
-		before_send: (event) => {
-			if (typeof window !== 'undefined' && !isPostHogAllowedPath(window.location.pathname)) {
-				return null;
-			}
-			return event;
-		}
+		disable_session_recording: true
 	});
 
 	initialized = true;
@@ -56,7 +43,7 @@ export function shutdownPostHog() {
 }
 
 export function capturePageview(pathname: string, search = '') {
-	if (!initialized || !isPostHogAllowedPath(pathname)) return;
+	if (!initialized) return;
 
 	posthog.capture('$pageview', {
 		$current_url: `${pathname}${search}`

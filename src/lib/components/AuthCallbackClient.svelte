@@ -13,10 +13,10 @@
 
 		const supabase = createSupabaseBrowserClient();
 		const {
-			data: { session }
-		} = await supabase.auth.getSession();
+			data: { user }
+		} = await supabase.auth.getUser();
 
-		if (!session) return;
+		if (!user) return;
 
 		if (type === 'recovery') {
 			await fetch('/app/auth/recovery-session', { method: 'POST' });

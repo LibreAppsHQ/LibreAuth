@@ -36,7 +36,7 @@
 		rel="stylesheet"
 	/>
 	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-	<link rel="apple-touch-icon" href="/favicon.svg" />
+	<link rel="apple-touch-icon" href="/icon-192.png" />
 	<link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
 </svelte:head>
 

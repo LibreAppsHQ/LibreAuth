@@ -1,16 +1,14 @@
 import { json } from '@sveltejs/kit';
-import { createSupabaseRouteClient } from '$lib/server/supabaseCookies';
+import { createSupabaseRouteClient, getAuthenticatedUser } from '$lib/server/supabaseCookies';
 import type { RequestHandler } from './$types';
 
 const RECOVERY_COOKIE = 'password_recovery';
 
 export const POST: RequestHandler = async ({ cookies, url }) => {
-	const supabase = createSupabaseRouteClient(cookies);
-	const {
-		data: { session }
-	} = await supabase.auth.getSession();
+	const supabase = createSupabaseRouteClient(cookies, url.protocol === 'https:');
+	const user = await getAuthenticatedUser(supabase);
 
-	if (!session) {
+	if (!user) {
 		return json({ error: 'No active recovery session.' }, { status: 401 });
 	}
 

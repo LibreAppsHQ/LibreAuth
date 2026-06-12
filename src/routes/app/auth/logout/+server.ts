@@ -1,25 +1,7 @@
-import { redirect } from '@sveltejs/kit';
-import { createServerClient } from '@supabase/ssr';
-import { PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY } from '$env/static/public';
+import { signOutAndRedirect } from '$lib/server/logout';
 import type { RequestHandler } from './$types';
 
-export const POST: RequestHandler = async ({ locals, cookies }) => {
-	const { session } = await locals.safeGetSession();
+/** GET avoids SvelteKit cross-site POST CSRF checks (e.g. when ORIGIN is misconfigured). */
+export const GET: RequestHandler = (event) => signOutAndRedirect(event);
 
-	if (session) {
-		const client = createServerClient(PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY, {
-			cookies: {
-				getAll: () => cookies.getAll(),
-				setAll: (cookiesToSet) => {
-					cookiesToSet.forEach(({ name, value, options }) => {
-						cookies.set(name, value, { ...options, path: '/' });
-					});
-				}
-			}
-		});
-
-		await client.auth.signOut();
-	}
-
-	throw redirect(303, '/app/login');
-};
+export const POST: RequestHandler = (event) => signOutAndRedirect(event);

@@ -1,7 +1,8 @@
 import type { LayoutServerLoad } from './$types';
 import { getSiteUrl } from '$lib/seo';
 
-export const load: LayoutServerLoad = async ({ locals, url }) => {
+export const load: LayoutServerLoad = async ({ locals, url, depends }) => {
+	depends('supabase:auth');
 	const { session, user } = await locals.safeGetSession();
 	return {
 		session,
