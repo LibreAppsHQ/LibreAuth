@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="color-scheme" content="light" />
+		<title>Your LibreAuth sign-in link</title>
+	</head>
+	<body
+		style="
+			margin: 0;
+			padding: 0;
+			background-color: #fff4d6;
+			font-family: 'Space Grotesk', Helvetica, Arial, sans-serif;
+			color: #0a0a0a;
+		"
+	>
+		<table
+			role="presentation"
+			width="100%"
+			cellspacing="0"
+			cellpadding="0"
+			style="background-color: #fff4d6; padding: 32px 16px"
+		>
+			<tr>
+				<td align="center">
+					<table
+						role="presentation"
+						width="100%"
+						cellspacing="0"
+						cellpadding="0"
+						style="
+							max-width: 520px;
+							background-color: #ffffff;
+							border: 3px solid #0a0a0a;
+							box-shadow: 5px 5px 0 #0a0a0a;
+						"
+					>
+						<tr>
+							<td style="padding: 28px 28px 8px">
+								<span
+									style="
+										display: inline-block;
+										background-color: #4ecdc4;
+										border: 3px solid #0a0a0a;
+										padding: 4px 10px;
+										font-size: 11px;
+										font-weight: 700;
+										letter-spacing: 0.08em;
+										text-transform: uppercase;
+									"
+									>Sign in</span
+								>
+							</td>
+						</tr>
+						<tr>
+							<td style="padding: 8px 28px 0">
+								<h1 style="margin: 0; font-size: 28px; line-height: 1.15; font-weight: 700">
+									Your sign-in link
+								</h1>
+							</td>
+						</tr>
+						<tr>
+							<td style="padding: 16px 28px 0; font-size: 15px; line-height: 1.6; color: #4a4a4a">
+								<p style="margin: 0">
+									Tap below to sign in to LibreAuth as
+									<strong style="color: #0a0a0a">{{ .Email }}</strong>. The link expires after a
+									short time.
+								</p>
+							</td>
+						</tr>
+						<tr>
+							<td style="padding: 24px 28px 0" align="left">
+								<a
+									href="{{ .SiteURL }}/app/auth/confirm?token_hash={{ .TokenHash }}&amp;type=magiclink&amp;next=/app"
+									style="
+										display: inline-block;
+										background-color: #0a0a0a;
+										color: #ffffff;
+										text-decoration: none;
+										border: 3px solid #0a0a0a;
+										padding: 14px 22px;
+										font-size: 15px;
+										font-weight: 700;
+									"
+									>Sign in</a
+								>
+							</td>
+						</tr>
+						<tr>
+							<td
+								style="padding: 20px 28px 28px; font-size: 13px; line-height: 1.6; color: #4a4a4a"
+							>
+								<p style="margin: 0 0 8px">
+									If you didn’t request this link, you can safely ignore this email.
+								</p>
+								<p style="margin: 0; word-break: break-all">
+									Link not working? Copy and paste:<br /><span style="color: #0a0a0a"
+										>{{ .SiteURL }}/app/auth/confirm?token_hash={{ .TokenHash
+										}}&amp;type=magiclink&amp;next=/app</span
+									>
+								</p>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>

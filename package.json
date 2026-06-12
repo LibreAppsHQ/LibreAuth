@@ -1,0 +1,49 @@
+{
+	"name": "LibreAuth",
+	"private": true,
+	"version": "0.1.0",
+	"type": "module",
+	"license": "AGPL-3.0-only",
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "vite preview",
+		"prepare": "svelte-kit sync || echo ''",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"lint": "prettier --check . && eslint .",
+		"format": "prettier --write .",
+		"db:setup": "supabase db query --linked --file supabase/migrations/001_initial.sql"
+	},
+	"devDependencies": {
+		"@eslint/compat": "^2.0.4",
+		"@eslint/js": "^10.0.1",
+		"@sveltejs/adapter-auto": "^7.0.1",
+		"@sveltejs/adapter-vercel": "^6.3.3",
+		"@sveltejs/kit": "^2.57.0",
+		"@sveltejs/vite-plugin-svelte": "^7.0.0",
+		"@tailwindcss/typography": "^0.5.19",
+		"@tailwindcss/vite": "^4.2.2",
+		"@types/node": "^24",
+		"eslint": "^10.2.0",
+		"eslint-config-prettier": "^10.1.8",
+		"eslint-plugin-svelte": "^3.17.0",
+		"globals": "^17.4.0",
+		"prettier": "^3.8.1",
+		"prettier-plugin-svelte": "^3.5.1",
+		"prettier-plugin-tailwindcss": "^0.7.2",
+		"svelte": "^5.55.2",
+		"svelte-check": "^4.4.6",
+		"tailwindcss": "^4.2.2",
+		"typescript": "^6.0.2",
+		"typescript-eslint": "^8.58.1",
+		"vite": "^8.0.7"
+	},
+	"dependencies": {
+		"@fortawesome/fontawesome-free": "^7.2.0",
+		"@supabase/ssr": "^0.8.0",
+		"@supabase/supabase-js": "^2.97.0",
+		"html5-qrcode": "^2.3.8",
+		"posthog-js": "^1.386.6"
+	},
+	"packageManager": "pnpm@10.33.0"
+}

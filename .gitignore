@@ -1,0 +1,9 @@
+node_modules
+.svelte-kit
+/build
+!.env.example
+.DS_Store
+Thumbs.db
+supabase/.temp
+.vercel
+.env.local
