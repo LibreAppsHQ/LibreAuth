@@ -638,7 +638,7 @@
 						<a href="/" class="neo-btn neo-btn-ghost text-sm">Site</a>
 						<a href="/security" class="neo-btn neo-btn-ghost text-sm">Security</a>
 						<a
-							href="https://github.com/Arcbasehq/LibreAuth"
+							href="https://github.com/LibreAppsHQ/LibreAuth"
 							target="_blank"
 							rel="noopener noreferrer"
 							class="neo-btn neo-btn-ghost text-sm"

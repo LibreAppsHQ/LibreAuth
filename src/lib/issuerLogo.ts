@@ -1,5 +1,5 @@
 const ISSUER_DOMAINS: Record<string, string> = {
-	github: 'github.com/Arcbasehq/LibreAuth',
+	github: 'github.com/LibreAppsHQ/LibreAuth',
 	gitlab: 'gitlab.com',
 	bitbucket: 'bitbucket.org',
 	google: 'google.com',

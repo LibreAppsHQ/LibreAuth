@@ -5,7 +5,7 @@
 	const period = 30;
 
 	const demoAccounts = [
-		{ issuer: 'github.com/Arcbasehq/LibreAuth', name: 'you@mail.com', secret: 'JBSWY3DPEHPK3PXP' },
+		{ issuer: 'github.com/LibreAppsHQ/LibreAuth', name: 'you@mail.com', secret: 'JBSWY3DPEHPK3PXP' },
 		{ issuer: 'google.com', name: 'you@gmail.com', secret: 'GEZDGNBVGY3TQOJQ' },
 		{ issuer: 'aws.amazon.com', name: 'prod-admin', secret: 'MFRGGZDFMZTWQ2LK' },
 		{ issuer: 'discord.com', name: 'stormz', secret: 'ONSWG4TFOQYTEMDD' }

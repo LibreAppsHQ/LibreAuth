@@ -37,7 +37,7 @@
 				'Deploy on Vercel, Node, Docker'
 			],
 			cta: 'Read README',
-			href: 'https://github.com/Arcbasehq/LibreAuth',
+			href: 'https://github.com/LibreAppsHQ/LibreAuth',
 			highlight: false
 		}
 	];
