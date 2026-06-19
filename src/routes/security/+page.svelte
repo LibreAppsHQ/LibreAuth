@@ -133,7 +133,7 @@
 		<CtaBand
 			title="Read the code yourself."
 			desc="AGPL licensed. Audit the repo, run the migration, deploy your own instance."
-			primary={{ href: 'https://github.com/LibreAppsHQ/LibreAuth', label: 'View on GitHub' }}
+			primary={{ href: 'https://github.com/Arcbasehq/LibreAuth', label: 'View on GitHub' }}
 			secondary={{ href: '/privacy', label: 'Privacy policy' }}
 		/>
 	</main>

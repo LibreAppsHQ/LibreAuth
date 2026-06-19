@@ -83,7 +83,7 @@
 					&copy; {new Date().getFullYear()} LibreAuth — security with personality.
 				</p>
 				<a
-					href="https://github.com/LibreAppsHQ/LibreAuth"
+					href="https://github.com/Arcbasehq/LibreAuth"
 					target="_blank"
 					rel="noopener noreferrer"
 					class="neo-btn neo-btn-ghost neo-btn-icon"
